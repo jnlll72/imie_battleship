@@ -21,6 +21,8 @@ public class GridFrame extends JFrame implements ActionListener {
 
     private boolean ready = false;
 
+    private JLabel labelInfo;
+
 
     public GridFrame(Client client, int index) throws UnsupportedLookAndFeelException {
         UIManager.setLookAndFeel(new MetalLookAndFeel());
@@ -32,10 +34,23 @@ public class GridFrame extends JFrame implements ActionListener {
 
         panGrid = new PanelGrid(this.grid.getW(), this.grid.getH(), this.grid);
 
+        this.labelInfo = new JLabel();
+        this.labelInfo.setBackground(Color.BLACK);
+        this.labelInfo.setHorizontalAlignment(JLabel.CENTER);
+        this.labelInfo.setVerticalAlignment(JLabel.CENTER);
+        this.labelInfo.setFont(new Font("Serif", Font.BOLD, 30));
+
         this.setTitle("BattleShip - Client " + index);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1000, 800);
         this.setResizable(false);
+
+
+        JMenuBar menu = new JMenuBar();
+        menu.add(new JMenu("Menu"));
+        menu.add(new JMenu("Règles"));
+
+        this.setJMenuBar(menu);
 
         // PANEL MAIN
 
@@ -148,6 +163,8 @@ public class GridFrame extends JFrame implements ActionListener {
         btnReady.addActionListener(this);
         panS.add(btnReady);
 
+
+        panN.add(this.labelInfo);
 
         sPan1.add(panN, BorderLayout.NORTH);
         sPan1.add(panE, BorderLayout.EAST);
@@ -323,6 +340,8 @@ public class GridFrame extends JFrame implements ActionListener {
 
     public void lockGrid() {
 
+        this.labelInfo.setText("EN ATTENTE");
+
         for (int i = 0; i < this.grid.getW(); i++) {
             for (int j = 0; j < this.grid.getH(); j++) {
                 this.aryButton[i][j].setEnabled(false);
@@ -331,6 +350,7 @@ public class GridFrame extends JFrame implements ActionListener {
     }
 
     public void unLockGrid() {
+        this.labelInfo.setText("A VOUS DE JOUER");
         for (int i = 0; i < this.grid.getW(); i++) {
             for (int j = 0; j < this.grid.getH(); j++) {
                 if (this.grid.getBox(i, j).getState() != 3) {
