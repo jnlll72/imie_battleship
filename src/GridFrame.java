@@ -70,51 +70,69 @@ public class GridFrame extends JFrame implements ActionListener {
 
         panC.setPreferredSize(new Dimension(400, 400));
 
-        GridLayout GL = new GridLayout(this.grid.getW(), this.grid.getH());
+        GridLayout GL = new GridLayout(this.grid.getW() + 1, this.grid.getH() + 1);
         GL.setHgap(0);
         GL.setVgap(0);
         panC.setLayout(GL);
 
-        for (int i = 0; i < this.grid.getW(); i++) {
-            for (int j = 0; j < this.grid.getH(); j++) {
-                JButton btn = new JButton();
+        String[] alpha = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
 
-                Border grayBorder;
+        for (int i = 0; i < this.grid.getW() + 1; i++) {
+            for (int j = 0; j < this.grid.getH() + 1; j++) {
 
                 if (i == 0 && j == 0) {
-                    grayBorder = BorderFactory.createMatteBorder(2, 2, 1, 1, Color.DARK_GRAY);
-                    btn.setBorder(grayBorder);
-                } else if (j == 9 && i == 0) {
-                    grayBorder = BorderFactory.createMatteBorder(2, 1, 1, 2, Color.DARK_GRAY);
-                    btn.setBorder(grayBorder);
-                } else if (j == 0 && i == 9) {
-                    grayBorder = BorderFactory.createMatteBorder(1, 2, 2, 1, Color.DARK_GRAY);
-                    btn.setBorder(grayBorder);
-                } else if (i == 9 && j == 9) {
-                    grayBorder = BorderFactory.createMatteBorder(1, 1, 2, 2, Color.DARK_GRAY);
-                    btn.setBorder(grayBorder);
-                } else if (i == 0 && (j > 0 && j < 9)) {
-                    grayBorder = BorderFactory.createMatteBorder(2, 1, 1, 1, Color.DARK_GRAY);
-                    btn.setBorder(grayBorder);
-                } else if (i == 9 && (j > 0 && j < 9)) {
-                    grayBorder = BorderFactory.createMatteBorder(1, 1, 2, 1, Color.DARK_GRAY);
-                    btn.setBorder(grayBorder);
-                } else if (j == 0 && (i > 0 && i < 9)) {
-                    grayBorder = BorderFactory.createMatteBorder(1, 2, 1, 1, Color.DARK_GRAY);
-                    btn.setBorder(grayBorder);
-                } else if (j == 9 && (i > 0 && i < 9)) {
-                    grayBorder = BorderFactory.createMatteBorder(1, 1, 1, 2, Color.DARK_GRAY);
-                    btn.setBorder(grayBorder);
+                    panC.add(new JPanel());
+                } else if (i == 0) {
+                    JLabel label = new JLabel(alpha[j - 1]);
+                    label.setHorizontalAlignment(JLabel.CENTER);
+                    label.setVerticalAlignment(JLabel.CENTER);
+                    panC.add(label);
+                } else if (j == 0) {
+                    JLabel label = new JLabel(Integer.toString(i));
+                    label.setHorizontalAlignment(JLabel.CENTER);
+                    label.setVerticalAlignment(JLabel.CENTER);
+                    panC.add(label);
                 } else {
-                    grayBorder = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.DARK_GRAY);
-                    btn.setBorder(grayBorder);
+                    JButton btn = new JButton();
+                    Border grayBorder;
+
+                    if (i == 1 && j == 1) {
+                        grayBorder = BorderFactory.createMatteBorder(2, 2, 1, 1, Color.DARK_GRAY);
+                        btn.setBorder(grayBorder);
+                    } else if (j == 10 && i == 1) {
+                        grayBorder = BorderFactory.createMatteBorder(2, 1, 1, 2, Color.DARK_GRAY);
+                        btn.setBorder(grayBorder);
+                    } else if (j == 1 && i == 10) {
+                        grayBorder = BorderFactory.createMatteBorder(1, 2, 2, 1, Color.DARK_GRAY);
+                        btn.setBorder(grayBorder);
+                    } else if (i == 10 && j == 10) {
+                        grayBorder = BorderFactory.createMatteBorder(1, 1, 2, 2, Color.DARK_GRAY);
+                        btn.setBorder(grayBorder);
+                    } else if (i == 1 && (j > 1 && j < 10)) {
+                        grayBorder = BorderFactory.createMatteBorder(2, 1, 1, 1, Color.DARK_GRAY);
+                        btn.setBorder(grayBorder);
+                    } else if (i == 10 && (j > 1 && j < 10)) {
+                        grayBorder = BorderFactory.createMatteBorder(1, 1, 2, 1, Color.DARK_GRAY);
+                        btn.setBorder(grayBorder);
+                    } else if (j == 1 && (i > 1 && i < 10)) {
+                        grayBorder = BorderFactory.createMatteBorder(1, 2, 1, 1, Color.DARK_GRAY);
+                        btn.setBorder(grayBorder);
+                    } else if (j == 10 && (i > 1 && i < 10)) {
+                        grayBorder = BorderFactory.createMatteBorder(1, 1, 1, 2, Color.DARK_GRAY);
+                        btn.setBorder(grayBorder);
+                    } else {
+                        grayBorder = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.DARK_GRAY);
+                        btn.setBorder(grayBorder);
+                    }
+
+                    //btn.setText("(" + i + "," + j + ")");
+                    btn.setBackground(Color.WHITE);
+                    btn.addActionListener(this);
+                    this.aryButton[i - 1][j - 1] = btn;
+                    panC.add(btn);
                 }
 
-                //btn.setText("(" + i + "," + j + ")");
-                btn.setBackground(Color.WHITE);
-                btn.addActionListener(this);
-                this.aryButton[i][j] = btn;
-                panC.add(btn);
+
             }
         }
 
@@ -123,6 +141,7 @@ public class GridFrame extends JFrame implements ActionListener {
 
         btnReady.addActionListener(this);
         panS.add(btnReady);
+
 
         sPan1.add(panN, BorderLayout.NORTH);
         sPan1.add(panE, BorderLayout.EAST);
@@ -162,21 +181,26 @@ public class GridFrame extends JFrame implements ActionListener {
         } else if (!this.ready) {
             Box b = this.isBox(e.getSource());
             //System.out.println(b);
+            System.out.println(this.grid);
         } else if (this.ready) {
             //System.out.println("OK");
             Box b = this.checkBox(e.getSource());
             //System.out.println(b);
             JButton btn = this.aryButton[b.getX()][b.getY()];
 
-            Object[] msg;
+            Object[] msg = null;
 
-            if (b.getState() == 2) {
-                btn.setBackground(Color.BLUE);
-                msg = new Object[]{"YES", b};
-            } else {
-                btn.setBackground(Color.GRAY);
-                msg = new Object[]{"NO", b};
+            if (b.getState() != 3) {
+                if (b.getState() == 2) {
+                    btn.setBackground(Color.BLUE);
+                    msg = new Object[]{"YES", b};
+                } else {
+                    btn.setBackground(Color.GRAY);
+                    msg = new Object[]{"NO", b};
+                }
             }
+
+
             btn.setEnabled(false);
 
             if (this.grid.getBox(b.getX(), b.getY()).getState() != 3) {
@@ -245,6 +269,7 @@ public class GridFrame extends JFrame implements ActionListener {
     }
 
     public void lockGrid() {
+
         for (int i = 0; i < this.grid.getW(); i++) {
             for (int j = 0; j < this.grid.getH(); j++) {
                 this.aryButton[i][j].setEnabled(false);
@@ -255,7 +280,9 @@ public class GridFrame extends JFrame implements ActionListener {
     public void unLockGrid() {
         for (int i = 0; i < this.grid.getW(); i++) {
             for (int j = 0; j < this.grid.getH(); j++) {
-                this.aryButton[i][j].setEnabled(true);
+                if (this.grid.getBox(i, j).getState() != 3) {
+                    this.aryButton[i][j].setEnabled(true);
+                }
             }
         }
     }

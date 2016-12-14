@@ -137,10 +137,13 @@ public class Grid implements Serializable {
 
                     boolean ok = false;
 
+                    boolean trouve = false;
+
                     while (!ok) {
                         j++;
                         if (j < 10) {
                             while (j < 10 && this.grid[boat.getX()][j].getState() == 1) {
+                                trouve = true;
                                 boat.setLongueur(boat.getLongueur() + 1);
                                 boat.setOrientation(0);
 
@@ -151,7 +154,7 @@ public class Grid implements Serializable {
                         }
 
                         i++;
-                        if (i < 10) {
+                        if (i < 10 && !trouve) {
                             while (i < 10 && this.grid[i][boat.getY()].getState() == 1) {
 
                                 boat.setLongueur(boat.getLongueur() + 1);
@@ -177,18 +180,18 @@ public class Grid implements Serializable {
             }
         }
 
-        /*String s = "";
+        String s = "";
         for (int i = 0; i < this.getH(); i++) {
             for (int j = 0; j < this.getW(); j++) {
                 s += this.grid[i][j].getState();
             }
             s += "\n";
         }
-        System.out.println(s);*/
+        System.out.println(s);
 
         boolean verif = verifGrille();
 
-        System.out.println(verif);
+        //System.out.println(verif);
 
         if (!verif) {
             for (int i = 0; i < this.getH(); i++) {
@@ -219,6 +222,8 @@ public class Grid implements Serializable {
         int boat4 = 0;
         int boat5 = 0;
 
+        System.out.println(this.aryBoat);
+
         if (this.aryBoat.size() == 4) {
             for (int i = 0; i < this.aryBoat.size(); i++) {
                 Boat b = this.aryBoat.get(i);
@@ -239,6 +244,11 @@ public class Grid implements Serializable {
                         break;
                 }
             }
+
+            System.out.println(boat2);
+            System.out.println(boat3);
+            System.out.println(boat4);
+            System.out.println(boat5);
 
             if (boat2 == 1 && boat3 == 1 && boat4 == 1 && boat5 == 1) {
                 return true;
