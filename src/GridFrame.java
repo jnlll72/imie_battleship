@@ -232,7 +232,7 @@ public class GridFrame extends JFrame implements ActionListener {
         } else if (!this.ready) {
             Box b = this.isBox(e.getSource());
             //System.out.println(b);
-            System.out.println(this.grid);
+            //System.out.println(this.grid);
         } else if (this.ready) {
             //System.out.println("OK");
             Box b = this.checkBox(e.getSource());
@@ -241,7 +241,7 @@ public class GridFrame extends JFrame implements ActionListener {
 
             Object[] msg = null;
 
-            Boat boat = this.grid.touche(b);
+            //Boat boat = this.grid.touche(b);
 
             if (b.getState() != 3) {
                 if (b.getState() == 2) {
