@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bde7234b-3389-4fc8-99a3-68e3db511a1d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PanelGrid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BATTLESHIP/Grid.class" afterPath="$PROJECT_DIR$/out/production/BATTLESHIP/Grid.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BATTLESHIP/GridFrame.class" afterPath="$PROJECT_DIR$/out/production/BATTLESHIP/GridFrame.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BATTLESHIP/Serveur.class" afterPath="$PROJECT_DIR$/out/production/BATTLESHIP/Serveur.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GridFrame.java" afterPath="$PROJECT_DIR$/src/GridFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Grid.java" afterPath="$PROJECT_DIR$/src/Grid.java" />
     </list>
     <ignored path="BATTLESHIP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,7 +48,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PanelGrid.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PanelGrid.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PanelGrid.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="529">
@@ -116,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Grid.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Grid.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Grid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="619">
-              <caret line="280" column="36" selection-start-line="280" selection-start-column="35" selection-end-line="280" selection-end-column="36" />
+            <state relative-caret-position="574">
+              <caret line="240" column="32" selection-start-line="240" selection-start-column="32" selection-end-line="240" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -167,9 +163,9 @@
         <option value="$PROJECT_DIR$/src/Box.java" />
         <option value="$PROJECT_DIR$/src/Client.java" />
         <option value="$PROJECT_DIR$/src/Serveur.java" />
-        <option value="$PROJECT_DIR$/src/Grid.java" />
         <option value="$PROJECT_DIR$/src/GridFrame.java" />
         <option value="$PROJECT_DIR$/src/PanelGrid.java" />
+        <option value="$PROJECT_DIR$/src/Grid.java" />
       </list>
     </option>
   </component>
@@ -621,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1481719206485</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="v0.4">
+      <created>1481723474762</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1481723474762</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -690,7 +693,8 @@
     <MESSAGE value="v0.1" />
     <MESSAGE value="v0.2" />
     <MESSAGE value="v0.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.3" />
+    <MESSAGE value="v0.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -974,41 +978,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Serveur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="89" column="24" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Grid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="619">
-          <caret line="280" column="36" selection-start-line="280" selection-start-column="35" selection-end-line="280" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Box.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="89" column="66" selection-start-line="89" selection-start-column="66" selection-end-line="89" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1034,6 +1008,36 @@
             <element signature="e#2895#2896#0" expanded="true" />
             <element signature="e#3254#3255#0" expanded="true" />
             <element signature="e#3328#3329#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Serveur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="89" column="24" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="89" column="66" selection-start-line="89" selection-start-column="66" selection-end-line="89" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Grid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="240" column="32" selection-start-line="240" selection-start-column="32" selection-end-line="240" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -180,14 +180,14 @@ public class Grid implements Serializable {
             }
         }
 
-        String s = "";
+        /*String s = "";
         for (int i = 0; i < this.getH(); i++) {
             for (int j = 0; j < this.getW(); j++) {
                 s += this.grid[i][j].getState();
             }
             s += "\n";
         }
-        System.out.println(s);
+        System.out.println(s);*/
 
         boolean verif = verifGrille();
 
@@ -222,7 +222,7 @@ public class Grid implements Serializable {
         int boat4 = 0;
         int boat5 = 0;
 
-        System.out.println(this.aryBoat);
+        //System.out.println(this.aryBoat);
 
         if (this.aryBoat.size() == 4) {
             for (int i = 0; i < this.aryBoat.size(); i++) {
@@ -245,10 +245,10 @@ public class Grid implements Serializable {
                 }
             }
 
-            System.out.println(boat2);
+            /*System.out.println(boat2);
             System.out.println(boat3);
             System.out.println(boat4);
-            System.out.println(boat5);
+            System.out.println(boat5);*/
 
             if (boat2 == 1 && boat3 == 1 && boat4 == 1 && boat5 == 1) {
                 return true;
