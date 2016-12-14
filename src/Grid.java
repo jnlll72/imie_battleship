@@ -262,4 +262,29 @@ public class Grid implements Serializable {
         this.grid = grid.grid;
         System.out.println(this.grid);
     }
+
+    public Boat touche(Box b) {
+        for (int i = 0; i < aryBoat.size(); i++) {
+            Boat boat = aryBoat.get(i);
+
+            if (boat.getOrientation() == 0) {
+                for (int j = boat.getX(); j < boat.getLongueur(); j++) {
+                    if (b.getX() == j && b.getY() == boat.getY()) {
+                        System.out.println(boat);
+                        return boat;
+                    }
+                }
+            } else {
+                for (int j = boat.getY(); j < boat.getLongueur(); j++) {
+                    if (b.getY() == j && b.getX() == boat.getX()) {
+                        System.out.println(boat);
+                        return boat;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
 }

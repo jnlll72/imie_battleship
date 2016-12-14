@@ -190,6 +190,8 @@ public class GridFrame extends JFrame implements ActionListener {
 
             Object[] msg = null;
 
+            Boat boat = this.grid.touche(b);
+
             if (b.getState() != 3) {
                 if (b.getState() == 2) {
                     btn.setBackground(Color.BLUE);

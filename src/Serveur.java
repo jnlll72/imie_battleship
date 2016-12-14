@@ -78,7 +78,7 @@ public class Serveur {
             while (true) {
 
                 Object reponse = this.objInt[index].readObject();
-                System.out.println(reponse);
+                //System.out.println(reponse);
 
                 if (((Object[]) reponse)[0].equals("YES")) {
                     if (index == 0) {
@@ -101,8 +101,6 @@ public class Serveur {
                     }
                     this.sendMsg(reponse, this.obj[index]);
                 }
-
-
             }
 
         } catch (IOException e) {
