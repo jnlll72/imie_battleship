@@ -12,7 +12,10 @@ import java.sql.Array;
  */
 public class GridFrame extends JFrame implements ActionListener {
     private JButton[][] aryButton;
+    private JPanel[][] aryPanel;
     private Grid grid = new Grid();
+
+    private PanelGrid panGrid;
 
     private Client client;
 
@@ -25,6 +28,9 @@ public class GridFrame extends JFrame implements ActionListener {
         this.client = client;
 
         aryButton = new JButton[this.grid.getW()][this.grid.getH()];
+        aryPanel = new JPanel[this.grid.getW()][this.grid.getH()];
+
+        panGrid = new PanelGrid(this.grid.getW(), this.grid.getH(), this.grid);
 
         this.setTitle("BattleShip - Client " + index);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -149,6 +155,49 @@ public class GridFrame extends JFrame implements ActionListener {
         sPan1.add(panS, BorderLayout.SOUTH);
         sPan1.add(panC, BorderLayout.CENTER);
 
+
+        JPanel panThisGrid = new JPanel();
+        JPanel panInfos = new JPanel();
+
+        panThisGrid.setLayout(new BorderLayout());
+        panThisGrid.setPreferredSize(new Dimension(300, 300));
+
+        JPanel panThisN = new JPanel();
+        JPanel panThisE = new JPanel();
+        JPanel panThisS = new JPanel();
+        JPanel panThisW = new JPanel();
+
+        JPanel panThisC = new JPanel();
+
+        panThisN.setPreferredSize(new Dimension(300, 25));
+        panThisE.setPreferredSize(new Dimension(25, 300));
+        panThisW.setPreferredSize(new Dimension(25, 300));
+        panThisS.setPreferredSize(new Dimension(300, 25));
+
+        panThisC.setPreferredSize(new Dimension(250, 250));
+
+        //panThisC.setBackground(Color.BLUE);
+
+
+        //=======================================
+        //Ajout du nouveau panel pour voir mes bateaux dans panThisC
+
+        panThisC = this.panGrid;
+
+        //=======================================
+
+        panThisGrid.add(panThisN, BorderLayout.NORTH);
+        panThisGrid.add(panThisE, BorderLayout.EAST);
+        panThisGrid.add(panThisC, BorderLayout.CENTER);
+        panThisGrid.add(panThisS, BorderLayout.SOUTH);
+        panThisGrid.add(panThisW, BorderLayout.WEST);
+
+
+        sPan2.setLayout(new BorderLayout());
+
+        sPan2.add(panThisGrid, BorderLayout.NORTH);
+        sPan2.add(panInfos, BorderLayout.CENTER);
+
         pMain1.add(sPan1, BorderLayout.WEST);
         pMain1.add(sPan2, BorderLayout.CENTER);
 
@@ -166,6 +215,8 @@ public class GridFrame extends JFrame implements ActionListener {
 
             if (ok) {
                 System.out.println("GRILLE VALIDE");
+                this.panGrid.setGrid(this.grid);
+                this.panGrid.setVisible(true);
                 ((JButton) e.getSource()).setEnabled(false);
                 this.lockGrid();
                 try {
@@ -298,15 +349,18 @@ public class GridFrame extends JFrame implements ActionListener {
     }
 
     public void setTextBoxYes(Box b) {
-        this.aryButton[b.getX()][b.getY()].setText("x");
-        this.aryButton[b.getX()][b.getY()].setForeground(Color.GREEN);
+        /*this.aryButton[b.getX()][b.getY()].setText("x");
+        this.aryButton[b.getX()][b.getY()].setForeground(Color.GREEN);*/
+
+        this.panGrid.updateYesBox(b);
+
 
     }
 
     public void setTextBoxNo(Box b) {
-        this.aryButton[b.getX()][b.getY()].setText("x");
-        this.aryButton[b.getX()][b.getY()].setForeground(Color.RED);
-
+        /*this.aryButton[b.getX()][b.getY()].setText("x");
+        this.aryButton[b.getX()][b.getY()].setForeground(Color.RED);*/
+        this.panGrid.updateNoBox(b);
     }
 
 
