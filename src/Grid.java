@@ -90,6 +90,41 @@ public class Grid implements Serializable {
         }
     }
 
+    public void updateCpt(Box b) {
+        for (int i = 0; i < aryBoat.size(); i++) {
+            Boat boat = aryBoat.get(i);
+            if (boat.getOrientation() == 0) {
+                for (int j = boat.getY(); j < (boat.getY() + boat.getLongueur()); j++) {
+                    if (b.getY() == j && b.getX() == boat.getX()) {
+                        this.aryBoat.get(i).setCpt();
+                    }
+                }
+            } else {
+                for (int j = boat.getX(); j < (boat.getX() + boat.getLongueur()); j++) {
+                    if (b.getX() == j && b.getY() == boat.getY()) {
+                        this.aryBoat.get(i).setCpt();
+                    }
+                }
+            }
+        }
+    }
+
+    public boolean checkBoats() {
+        int cpt = 0;
+        for (int i = 0; i < aryBoat.size(); i++) {
+            Boat boat = aryBoat.get(i);
+            if (boat.getCpt() == boat.getLongueur()) {
+                cpt++;
+            }
+        }
+
+        if (cpt == this.aryBoat.size()) {
+            return true;
+        }
+
+        return false;
+    }
+
     public void setBox(Box b) {
         if (b.getState() == 0) {
             this.grid[b.getX()][b.getY()].setState(1);

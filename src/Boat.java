@@ -1,11 +1,12 @@
 import java.io.Serializable;
 
-public class Boat implements Serializable{
+public class Boat implements Serializable {
     private int longueur;
     private int x;
     private int y;
     private int orientation; // O = horizontale, 1 = verticale
     private boolean etat;
+    private int cpt;
 
     public Boat(int longueur, int x, int y, int orientation) {
         this.longueur = longueur;
@@ -13,6 +14,7 @@ public class Boat implements Serializable{
         this.y = y;
         this.orientation = orientation;
         this.etat = true;
+        this.cpt = 0;
     }
 
     public Boat(int x, int y) {
@@ -21,6 +23,14 @@ public class Boat implements Serializable{
         this.y = y;
         this.orientation = 0;
         this.etat = true;
+    }
+
+    public int getCpt() {
+        return cpt;
+    }
+
+    public void setCpt() {
+        this.cpt++;
     }
 
     public boolean isEtat() {
@@ -67,9 +77,8 @@ public class Boat implements Serializable{
     public String toString() {
         return "Boat{" +
                 "longueur=" + longueur +
-                ", x=" + x +
-                ", y=" + y +
-                ", orientation=" + orientation +
+                "orientation=" + orientation +
+                "cpt=" + cpt +
                 '}';
     }
 }

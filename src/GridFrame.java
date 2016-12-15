@@ -34,11 +34,10 @@ public class GridFrame extends JFrame implements ActionListener {
 
         panGrid = new PanelGrid(this.grid.getW(), this.grid.getH(), this.grid);
 
-        this.labelInfo = new JLabel();
-        this.labelInfo.setBackground(Color.BLACK);
+        this.labelInfo = new JLabel("");
         this.labelInfo.setHorizontalAlignment(JLabel.CENTER);
         this.labelInfo.setVerticalAlignment(JLabel.CENTER);
-        this.labelInfo.setFont(new Font("Serif", Font.BOLD, 30));
+        this.labelInfo.setFont(new Font("Serif", Font.BOLD, 25));
 
         this.setTitle("BattleShip - Client " + index);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,7 +62,7 @@ public class GridFrame extends JFrame implements ActionListener {
         pMain1.setLayout(new BorderLayout());
 
         pMain2.setBorder(BorderFactory.createMatteBorder(5, 0, 0, 0, Color.DARK_GRAY));
-        pMain2.setPreferredSize(new Dimension(1000, 100));
+        pMain2.setPreferredSize(new Dimension(1000, 50));
 
         // SOUS PANEL MAIN
 
@@ -163,8 +162,8 @@ public class GridFrame extends JFrame implements ActionListener {
         btnReady.addActionListener(this);
         panS.add(btnReady);
 
-
-        panN.add(this.labelInfo);
+        panN.setLayout(new BorderLayout());
+        panN.add(this.labelInfo, BorderLayout.CENTER);
 
         sPan1.add(panN, BorderLayout.NORTH);
         sPan1.add(panE, BorderLayout.EAST);
@@ -262,6 +261,9 @@ public class GridFrame extends JFrame implements ActionListener {
 
             if (b.getState() != 3) {
                 if (b.getState() == 2) {
+
+                    this.grid.updateCpt(b);
+
                     btn.setBackground(Color.BLUE);
                     msg = new Object[]{"YES", b};
                 } else {
@@ -270,6 +272,7 @@ public class GridFrame extends JFrame implements ActionListener {
                 }
             }
 
+            //System.out.println(this.grid.checkBoats());
 
             btn.setEnabled(false);
 
@@ -282,6 +285,16 @@ public class GridFrame extends JFrame implements ActionListener {
                     e1.printStackTrace();
                 }
             }
+
+            if (this.grid.checkBoats()) {
+                msg = new Object[]{"END"};
+                try {
+                    this.client.sendMsg(msg);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+
 
         }
     }
@@ -389,5 +402,23 @@ public class GridFrame extends JFrame implements ActionListener {
             return true;
         }
         return false;
+    }
+
+    public void win() {
+        this.labelInfo.setText("VOUS AVEZ GAGNE");
+        for (int i = 0; i < this.grid.getW(); i++) {
+            for (int j = 0; j < this.grid.getH(); j++) {
+                this.aryButton[i][j].setEnabled(false);
+            }
+        }
+    }
+
+    public void loose() {
+        this.labelInfo.setText("VOUS AVEZ PERDU");
+        for (int i = 0; i < this.grid.getW(); i++) {
+            for (int j = 0; j < this.grid.getH(); j++) {
+                this.aryButton[i][j].setEnabled(false);
+            }
+        }
     }
 }

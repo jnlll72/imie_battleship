@@ -4,7 +4,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Client {
+public class Client implements Serializable {
 
     private Socket client;
     private GridFrame grid;
@@ -14,6 +14,29 @@ public class Client {
 
     private boolean send = true;
 
+    public ObjectInputStream getIn() {
+        return in;
+    }
+
+    public Socket getClient() {
+        return client;
+    }
+
+    public void setClient(Socket client) {
+        this.client = client;
+    }
+
+    public void setIn(ObjectInputStream in) {
+        this.in = in;
+    }
+
+    public ObjectOutputStream getOut() {
+        return out;
+    }
+
+    public void setOut(ObjectOutputStream out) {
+        this.out = out;
+    }
 
     private Client(String adresse, int port) throws IOException {
         this.client = new Socket(adresse, port);
@@ -81,13 +104,19 @@ public class Client {
                 this.grid.lockGrid();
             } else if (o.equals("unlock")) {
                 this.grid.unLockGrid();
+            } else if (o.equals("win")) {
+                this.grid.win();
+            } else if (o.equals("loose")) {
+                this.grid.loose();
+            } else if (o.equals("end")) {
+                this.grid.lockGrid();
             }
 
             if (o instanceof Object[]) {
-                if(((Object[])o)[0].equals("YES")){
-                    this.grid.setTextBoxYes((Box)((Object[])o)[1]);
-                }else{
-                    this.grid.setTextBoxNo((Box)((Object[])o)[1]);
+                if (((Object[]) o)[0].equals("YES")) {
+                    this.grid.setTextBoxYes((Box) ((Object[]) o)[1]);
+                } else if (((Object[]) o)[0].equals("No")) {
+                    this.grid.setTextBoxNo((Box) ((Object[]) o)[1]);
                 }
 
             }

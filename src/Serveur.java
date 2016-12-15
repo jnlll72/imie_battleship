@@ -80,27 +80,43 @@ public class Serveur {
                 Object reponse = this.objInt[index].readObject();
                 //System.out.println(reponse);
 
-                if (((Object[]) reponse)[0].equals("YES")) {
-                    if (index == 0) {
-                        this.sendMsg(reponse, this.obj[1]);
+                if (!((Object[]) reponse)[0].equals("END")) {
+                    if (((Object[]) reponse)[0].equals("YES")) {
+                        if (index == 0) {
+                            this.sendMsg(reponse, this.obj[1]);
+                        } else {
+                            this.sendMsg(reponse, this.obj[0]);
+                        }
+
                     } else {
-                        this.sendMsg(reponse, this.obj[0]);
+                        if (((Object[]) reponse)[0].equals("NO")) {
+                            if (index == 0) {
+                                this.sendMsg("lock", this.obj[0]);
+                                this.sendMsg("unlock", this.obj[1]);
+                                index = 1;
+                            } else {
+                                this.sendMsg("lock", this.obj[1]);
+                                this.sendMsg("unlock", this.obj[0]);
+                                index = 0;
+                            }
+                        }
+                        this.sendMsg(reponse, this.obj[index]);
+                    }
+                } else {
+                    System.out.println(index);
+
+                    this.sendMsg("win", this.obj[index]);
+
+                    if (index == 0) {
+                        this.sendMsg("loose", this.obj[1]);
+                    } else {
+                        this.sendMsg("loose", this.obj[0]);
                     }
 
-                } else {
-                    if (((Object[]) reponse)[0].equals("NO")) {
-                        if (index == 0) {
-                            this.sendMsg("lock", this.obj[0]);
-                            this.sendMsg("unlock", this.obj[1]);
-                            index = 1;
-                        } else {
-                            this.sendMsg("lock", this.obj[1]);
-                            this.sendMsg("unlock", this.obj[0]);
-                            index = 0;
-                        }
-                    }
-                    this.sendMsg(reponse, this.obj[index]);
+                    /*this.sendMsg("win",);
+                    this.sendMsg("loose",);*/
                 }
+
             }
 
         } catch (IOException e) {
