@@ -266,6 +266,8 @@ public class GridFrame extends JFrame implements ActionListener {
 
                     List<int[]> boat = this.grid.updateCpt(b);
 
+                    System.out.println(boat);
+
                     if (boat != null) {
                         for (int i = 0; i < boat.size(); i++) {
                             int[] ints = boat.get(i);
