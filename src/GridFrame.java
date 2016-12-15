@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.Array;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created by julien on 30/11/2016.
@@ -262,10 +264,19 @@ public class GridFrame extends JFrame implements ActionListener {
             if (b.getState() != 3) {
                 if (b.getState() == 2) {
 
-                    this.grid.updateCpt(b);
+                    List<int[]> boat = this.grid.updateCpt(b);
 
-                    btn.setBackground(Color.BLUE);
+                    if (boat != null) {
+                        for (int i = 0; i < boat.size(); i++) {
+                            int[] ints = boat.get(i);
+                            this.aryButton[ints[0]][ints[1]].setBackground(Color.RED);
+                        }
+                    } else {
+                        btn.setBackground(Color.ORANGE);
+                    }
+
                     msg = new Object[]{"YES", b};
+
                 } else {
                     btn.setBackground(Color.GRAY);
                     msg = new Object[]{"NO", b};

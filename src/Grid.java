@@ -90,13 +90,20 @@ public class Grid implements Serializable {
         }
     }
 
-    public void updateCpt(Box b) {
+    public List<int[]> updateCpt(Box b) {
         for (int i = 0; i < aryBoat.size(); i++) {
             Boat boat = aryBoat.get(i);
             if (boat.getOrientation() == 0) {
                 for (int j = boat.getY(); j < (boat.getY() + boat.getLongueur()); j++) {
                     if (b.getY() == j && b.getX() == boat.getX()) {
                         this.aryBoat.get(i).setCpt();
+
+                        if (this.aryBoat.get(i).getCpt() == this.aryBoat.get(i).getLongueur()) {
+                            /*System.out.println(aryCoord(this.aryBoat.get(i)).size());
+                            System.out.println(aryCoord(this.aryBoat.get(i)).get(0)[0]);
+                            System.out.println(aryCoord(this.aryBoat.get(i)).get(0)[1]);*/
+                            return aryCoord(this.aryBoat.get(i));
+                        }
                     }
                 }
             } else {
@@ -104,9 +111,42 @@ public class Grid implements Serializable {
                     if (b.getX() == j && b.getY() == boat.getY()) {
                         this.aryBoat.get(i).setCpt();
                     }
+
+                    if (this.aryBoat.get(i).getCpt() == this.aryBoat.get(i).getLongueur()) {
+                        /*System.out.println(aryCoord(this.aryBoat.get(i)).get(0)[0]);
+                        System.out.println(aryCoord(this.aryBoat.get(i)).get(0)[1]);*/
+                        return aryCoord(this.aryBoat.get(i));
+                    }
                 }
             }
         }
+        return null;
+    }
+
+    public List<int[]> aryCoord(Boat b) {
+
+        List<int[]> list = new ArrayList<>();
+
+
+        if (b.getOrientation() == 0) {
+            for (int j = b.getY(); j < (b.getY() + b.getLongueur()); j++) {
+                int[] coord = new int[2];
+                coord[0] = b.getX();
+                coord[1] = j;
+
+                list.add(coord);
+            }
+        } else {
+            for (int j = b.getX(); j < (b.getX() + b.getLongueur()); j++) {
+                int[] coord = new int[2];
+                coord[0] = j;
+                coord[1] = b.getY();
+
+                list.add(coord);
+            }
+        }
+
+        return list;
     }
 
     public boolean checkBoats() {
