@@ -2,8 +2,10 @@ import javax.swing.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.Inet4Address;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class Serveur {
     private ServerSocket server;
@@ -33,8 +35,8 @@ public class Serveur {
         out.flush();
     }
 
-    private void run() throws ClassNotFoundException {
-        System.out.println("RUN SERVER");
+    private void run() throws ClassNotFoundException, UnknownHostException {
+        System.out.println("RUN SERVER ON " + Inet4Address.getLocalHost().getHostAddress());
 
         try {
             boolean add = true;
@@ -48,6 +50,8 @@ public class Serveur {
                 this.objInt[i++] = new ObjectInputStream(sockClient.getInputStream());
 
                 this.sendMsg(i, this.obj[i - 1]);
+
+                System.out.println("Client " + i + " connecté !");
 
                 if (i == MAXCLIENT) {
                     break;
@@ -124,7 +128,7 @@ public class Serveur {
         }
     }
 
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) throws ClassNotFoundException, UnknownHostException {
         Serveur serveur = new Serveur(3333);
         serveur.run();
     }

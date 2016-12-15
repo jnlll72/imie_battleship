@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -6,6 +7,8 @@ public class Main {
     public static void main(String[] args) throws UnsupportedLookAndFeelException {
 
         //GridFrame frame = new GridFrame();
+
+        FrameConnection con = new FrameConnection();
 
 
         /*Grid grid = new Grid();
