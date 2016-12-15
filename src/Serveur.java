@@ -103,7 +103,7 @@ public class Serveur {
                         this.sendMsg(reponse, this.obj[index]);
                     }
                 } else {
-                    System.out.println(index);
+                    //System.out.println(index);
 
                     this.sendMsg("win", this.obj[index]);
 

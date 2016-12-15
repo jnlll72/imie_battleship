@@ -115,7 +115,7 @@ public class Client implements Serializable {
             if (o instanceof Object[]) {
                 if (((Object[]) o)[0].equals("YES")) {
                     this.grid.setTextBoxYes((Box) ((Object[]) o)[1]);
-                } else if (((Object[]) o)[0].equals("No")) {
+                } else if (((Object[]) o)[0].equals("NO")) {
                     this.grid.setTextBoxNo((Box) ((Object[]) o)[1]);
                 }
 
