@@ -72,11 +72,18 @@ public class Client implements Serializable {
     }
 
 
-    public void waitServer() throws IOException, InterruptedException, ClassNotFoundException {
+    public void waitServer() throws IOException {
         /*ObjectInputStream in = new ObjectInputStream(this.client.getInputStream());*/
         while (true) {
             System.out.println("EN ATTENTE DU SERVER");
-            Object o = this.in.readObject();
+            Object o = null;
+            try {
+                o = this.in.readObject();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
 
             //System.out.println(o);
 

@@ -210,7 +210,6 @@ public class GridFrame extends JFrame implements ActionListener {
         panThisGrid.add(panThisS, BorderLayout.SOUTH);
         panThisGrid.add(panThisW, BorderLayout.WEST);
 
-
         sPan2.setLayout(new BorderLayout());
 
         sPan2.add(panThisGrid, BorderLayout.NORTH);
@@ -220,7 +219,7 @@ public class GridFrame extends JFrame implements ActionListener {
         pMain1.add(sPan2, BorderLayout.CENTER);
 
         main.add(pMain1, BorderLayout.CENTER);
-        main.add(pMain2, BorderLayout.SOUTH);
+        //main.add(pMain2, BorderLayout.SOUTH);
 
         this.setContentPane(main);
         this.setVisible(true);
@@ -266,7 +265,16 @@ public class GridFrame extends JFrame implements ActionListener {
 
                     List<int[]> boat = this.grid.updateCpt(b);
 
-                    System.out.println(boat);
+                    //System.out.println(boat);
+
+                    /*if (boat != null) {
+                        for (int i = 0; i < boat.size(); i++) {
+                            int[] ints = boat.get(i);
+                            System.out.println(ints[0]);
+                            System.out.println(ints[1]);
+                        }
+                    }*/
+
 
                     if (boat != null) {
                         for (int i = 0; i < boat.size(); i++) {
@@ -277,12 +285,15 @@ public class GridFrame extends JFrame implements ActionListener {
                         btn.setBackground(Color.ORANGE);
                     }
 
+
                     msg = new Object[]{"YES", b};
 
                 } else {
                     btn.setBackground(Color.GRAY);
                     msg = new Object[]{"NO", b};
                 }
+
+                this.repaint();
             }
 
             //System.out.println(this.grid.checkBoats());
