@@ -297,6 +297,12 @@ public class GridFrame extends JFrame implements ActionListener {
                 }
 
 
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+
                 this.repaint();
             }
 
