@@ -97,28 +97,28 @@ public class Grid implements Serializable {
                 for (int j = boat.getY(); j < (boat.getY() + boat.getLongueur()); j++) {
                     if (b.getY() == j && b.getX() == boat.getX()) {
                         this.aryBoat.get(i).setCpt();
+                        //System.out.println(this.aryBoat.get(i));
 
                         if (this.aryBoat.get(i).getCpt() == this.aryBoat.get(i).getLongueur()) {
-                            /*System.out.println(aryCoord(this.aryBoat.get(i)).size());
-                            System.out.println(aryCoord(this.aryBoat.get(i)).get(0)[0]);
-                            System.out.println(aryCoord(this.aryBoat.get(i)).get(0)[1]);*/
                             return aryCoord(this.aryBoat.get(i));
                         }
                     }
+
                 }
             } else {
                 for (int j = boat.getX(); j < (boat.getX() + boat.getLongueur()); j++) {
                     if (b.getX() == j && b.getY() == boat.getY()) {
                         this.aryBoat.get(i).setCpt();
-                    }
+                        //System.out.println(this.aryBoat.get(i));
 
-                    if (this.aryBoat.get(i).getCpt() == this.aryBoat.get(i).getLongueur()) {
-                        /*System.out.println(aryCoord(this.aryBoat.get(i)).get(0)[0]);
-                        System.out.println(aryCoord(this.aryBoat.get(i)).get(0)[1]);*/
-                        return aryCoord(this.aryBoat.get(i));
+
+                        if (this.aryBoat.get(i).getCpt() == this.aryBoat.get(i).getLongueur()) {
+                            return aryCoord(this.aryBoat.get(i));
+                        }
                     }
                 }
             }
+
         }
         return null;
     }

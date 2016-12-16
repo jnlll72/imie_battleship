@@ -275,6 +275,8 @@ public class GridFrame extends JFrame implements ActionListener {
                         }
                     }*/
 
+                    //System.out.println(boat);
+
 
                     if (boat != null) {
                         for (int i = 0; i < boat.size(); i++) {
@@ -282,6 +284,7 @@ public class GridFrame extends JFrame implements ActionListener {
                             this.aryButton[ints[0]][ints[1]].setBackground(Color.RED);
                         }
                     } else {
+                        //System.out.println("ICI");
                         btn.setBackground(Color.ORANGE);
                     }
 
@@ -292,6 +295,7 @@ public class GridFrame extends JFrame implements ActionListener {
                     btn.setBackground(Color.GRAY);
                     msg = new Object[]{"NO", b};
                 }
+
 
                 this.repaint();
             }
